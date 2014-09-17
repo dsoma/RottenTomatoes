@@ -8,12 +8,15 @@
 
 #import "RTMoviesViewController.h"
 #import "RTMovieTableViewCell.h"
+#import "UIImageView+AFNetworking.h"
 
 static NSString *cellIdentifier = @"RTMovieTableViewCellId";
+static NSString* apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=dagqdghwaq3e3mxyrp7kmmj5&limit=20&country=us";
 
 @interface RTMoviesViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray* movieList;
 
 @end
 
@@ -37,6 +40,20 @@ static NSString *cellIdentifier = @"RTMovieTableViewCellId";
     self.tableView.rowHeight  = 145;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"RTMovieTableViewCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
+    
+    NSURL* nsApiURL = [[NSURL alloc] initWithString:apiURL];
+    NSURLRequest* request = [[NSURLRequest alloc] initWithURL:nsApiURL];
+    NSOperationQueue* opQueue = [NSOperationQueue mainQueue];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:opQueue  completionHandler:^(NSURLResponse* response, NSData* data, NSError* connectionError) {
+        NSDictionary* object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
+        self.movieList = object[@"movies"];
+        
+        [self.tableView reloadData];
+        
+        NSLog(@"Movies: %@", self.movieList);
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,17 +69,32 @@ static NSString *cellIdentifier = @"RTMovieTableViewCellId";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return self.movieList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RTMovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    cell.movieTitleLabel.text = @"How to train your dragon - part 2";
-    cell.movieDescLabel.text = @"This is an awesome movie. A must watch and a block-buster!";
+    if (self.movieList == nil) {
+        return cell;
+    }
     
-    cell.moviePosterView.image = [UIImage imageNamed:@"default.jpg"];
+    int rowIndex = indexPath.row;
+    
+    if (rowIndex < 0 || rowIndex >= self.movieList.count) {
+        return cell;
+    }
+    
+    NSDictionary* movie = self.movieList[rowIndex];
+    NSDictionary* poster = [movie valueForKey:@"posters"];
+    
+    cell.movieTitleLabel.text = movie[@"title"];
+    cell.movieDescLabel.text  = movie[@"synopsis"];
+    
+    NSString* posterUrl = [poster valueForKey:@"thumbnail"];
+    NSURL* thumbnailUrl = [[NSURL alloc] initWithString:posterUrl];
+    [cell.moviePosterView setImageWithURL:thumbnailUrl placeholderImage:[UIImage imageNamed:@"default.jpg"]];
     
     return cell;
 }
