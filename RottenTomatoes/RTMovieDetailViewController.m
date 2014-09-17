@@ -58,7 +58,9 @@
         
         [self.posterView setImageWithURL:thumbnailUrl placeholderImage:nil];
         
-        [self.posterView setImageWithURL:posterUrl placeholderImage:nil];
+        // TODO: Need to get the cached image from the model.
+        // And then use that image as the placeholder image.
+        [self.posterView setImageWithURL:posterUrl placeholderImage:self.posterView.image];
     }
 }
 
