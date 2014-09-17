@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RTModel.h"
 
-@interface RTMoviesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface RTMoviesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MovieDataObserver>
 
 @end

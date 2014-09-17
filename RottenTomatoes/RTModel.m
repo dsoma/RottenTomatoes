@@ -32,8 +32,11 @@ static NSString* apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/
         self.movieList = object[@"movies"];
         
         NSLog(@"Movies: %@", self.movieList);
-            
-        // TODO: Add callback
+        
+        // TODO: Send this only on success; On failure callback loadFailed.
+        if (self.observer != nil) {
+            [self.observer movieListLoaded];
+        }
     }];
 }
 
@@ -44,6 +47,59 @@ static NSString* apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/
     }
     
     return 0;
+}
+
+-(NSDictionary*) getMovie:(int)movieIndexInList
+{
+    if (self.movieList != nil && movieIndexInList >= 0 && movieIndexInList < self.movieList.count) {
+        return self.movieList[movieIndexInList];
+    }
+    
+    return nil;
+}
+
+-(NSDictionary*) getMoviePoster:(int)movieIndexInList
+{
+    NSDictionary* movie = [self getMovie:movieIndexInList];
+    if (movie != nil)
+    {
+        return [movie valueForKey:@"posters"];
+    }
+    
+    return nil;
+}
+
+-(NSString*) getMovieThumbnailUrl:(int)movieIndexInList
+{
+    NSDictionary* poster = [self getMoviePoster:movieIndexInList];
+    if (poster != nil)
+    {
+        return [poster valueForKey:@"thumbnail"];
+    }
+    
+    return nil;
+}
+
+-(NSString*) getTitle:(int)movieIndexInList
+{
+    NSDictionary* movie = [self getMovie:movieIndexInList];
+    if (movie != nil)
+    {
+        return [movie valueForKey:@"title"];
+    }
+    
+    return nil;
+}
+
+-(NSString*) getDesc:(int)movieIndexInList
+{
+    NSDictionary* movie = [self getMovie:movieIndexInList];
+    if (movie != nil)
+    {
+        return [movie valueForKey:@"synopsis"];
+    }
+    
+    return nil;
 }
 
 @end

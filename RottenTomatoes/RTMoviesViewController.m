@@ -11,12 +11,11 @@
 #import "UIImageView+AFNetworking.h"
 
 static NSString *cellIdentifier = @"RTMovieTableViewCellId";
-static NSString* apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=dagqdghwaq3e3mxyrp7kmmj5&limit=20&country=us";
 
 @interface RTMoviesViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray* movieList;
+@property (strong, nonatomic) RTModel* model;
 
 @end
 
@@ -27,6 +26,8 @@ static NSString* apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Box Office";
+        self.model = [[RTModel alloc] init];
+        self.model.observer = self;
     }
     return self;
 }
@@ -41,25 +42,12 @@ static NSString* apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/
     
     [self.tableView registerNib:[UINib nibWithNibName:@"RTMovieTableViewCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
     
-    NSURL* nsApiURL = [[NSURL alloc] initWithString:apiURL];
-    NSURLRequest* request = [[NSURLRequest alloc] initWithURL:nsApiURL];
-    NSOperationQueue* opQueue = [NSOperationQueue mainQueue];
-    
-    [NSURLConnection sendAsynchronousRequest:request queue:opQueue  completionHandler:^(NSURLResponse* response, NSData* data, NSError* connectionError) {
-        NSDictionary* object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        
-        self.movieList = object[@"movies"];
-        
-        [self.tableView reloadData];
-        
-        NSLog(@"Movies: %@", self.movieList);
-    }];
+    [self.model loadMovieList];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -69,34 +57,45 @@ static NSString* apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.movieList.count;
+    if (self.model != nil) {
+        return [self.model getMovieCount];
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RTMovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    if (self.movieList == nil) {
+    if (self.model == nil) {
         return cell;
     }
     
     int rowIndex = indexPath.row;
     
-    if (rowIndex < 0 || rowIndex >= self.movieList.count) {
-        return cell;
-    }
-    
-    NSDictionary* movie = self.movieList[rowIndex];
-    NSDictionary* poster = [movie valueForKey:@"posters"];
-    
-    cell.movieTitleLabel.text = movie[@"title"];
-    cell.movieDescLabel.text  = movie[@"synopsis"];
-    
-    NSString* posterUrl = [poster valueForKey:@"thumbnail"];
+    // Asynchronously load the movie poster thumbnail
+    NSString* posterUrl = [self.model getMovieThumbnailUrl:rowIndex];
     NSURL* thumbnailUrl = [[NSURL alloc] initWithString:posterUrl];
     [cell.moviePosterView setImageWithURL:thumbnailUrl placeholderImage:[UIImage imageNamed:@"default.jpg"]];
     
+    // Set the title and desc
+    cell.movieTitleLabel.text = [self.model getTitle:rowIndex];
+    cell.movieDescLabel.text  = [self.model getDesc:rowIndex];
+    
     return cell;
 }
+
+// From MovieDataObserver
+
+-(void)movieListLoaded
+{
+    [self.tableView reloadData];
+}
+
+-(void)movieListLoadFailed:(NSError*)error
+{
+    // TODO: Display error
+}
+
 
 @end
