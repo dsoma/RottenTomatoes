@@ -2,16 +2,18 @@
 //  RTMoviesViewController.m
 //  RottenTomatoes
 //
-//  Created by Deepak Somashekhara on 9/11/14.
+//  Created by Deepak Somashekhara on 9/16/14.
 //  Copyright (c) 2014 Deepak Somashekhara. All rights reserved.
 //
 
 #import "RTMoviesViewController.h"
+#import "RTMovieTableViewCell.h"
+
+static NSString *cellIdentifier = @"RTMovieTableViewCellId";
 
 @interface RTMoviesViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 
 @end
 
@@ -21,7 +23,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.title = @"Box Office";
     }
     return self;
 }
@@ -30,8 +32,11 @@
 {
     [super viewDidLoad];
     
-    //self.tableView.delegate = self;
-    //self.tableView.dataSource = self;
+    self.tableView.delegate   = self;
+    self.tableView.dataSource = self;
+    self.tableView.rowHeight  = 145;
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"RTMovieTableViewCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,15 +45,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-- (NSInteger) tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section:](NSInteger) section {
-    return 10;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
 }
 
-- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
-    cell.textLabel.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
 }
-*/
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    RTMovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    cell.movieTitleLabel.text = @"How to train your dragon - part 2";
+    cell.movieDescLabel.text = @"This is an awesome movie. A must watch and a block-buster!";
+    
+    cell.moviePosterView.image = [UIImage imageNamed:@"default.jpg"];
+    
+    return cell;
+}
 
 @end

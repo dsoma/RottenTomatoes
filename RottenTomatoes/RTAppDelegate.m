@@ -15,7 +15,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    self.window.rootViewController = [[RTMoviesViewController alloc] init];
+    RTMoviesViewController* moviesViewController = [[RTMoviesViewController alloc] init];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:moviesViewController];
     
     [self.window makeKeyAndVisible];
     

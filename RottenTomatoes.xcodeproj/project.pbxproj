@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F23882419C83E710038FF17 /* RTMoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F23882219C83E710038FF17 /* RTMoviesViewController.m */; };
+		7F23882519C83E710038FF17 /* RTMoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F23882319C83E710038FF17 /* RTMoviesViewController.xib */; };
+		7F23882919C851570038FF17 /* RTMovieTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F23882719C851570038FF17 /* RTMovieTableViewCell.m */; };
+		7F23882A19C851570038FF17 /* RTMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F23882819C851570038FF17 /* RTMovieTableViewCell.xib */; };
 		7F88B15B19C2945D00466E66 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F88B15A19C2945D00466E66 /* Foundation.framework */; };
 		7F88B15D19C2945D00466E66 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F88B15C19C2945D00466E66 /* CoreGraphics.framework */; };
 		7F88B15F19C2945D00466E66 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F88B15E19C2945D00466E66 /* UIKit.framework */; };
@@ -19,8 +23,7 @@
 		7F88B17619C2945D00466E66 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F88B15E19C2945D00466E66 /* UIKit.framework */; };
 		7F88B17E19C2945D00466E66 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F88B17C19C2945D00466E66 /* InfoPlist.strings */; };
 		7F88B18019C2945D00466E66 /* RottenTomatoesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F88B17F19C2945D00466E66 /* RottenTomatoesTests.m */; };
-		7F88B18C19C294B400466E66 /* RTMoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F88B18A19C294B400466E66 /* RTMoviesViewController.m */; };
-		7F88B18D19C294B400466E66 /* RTMoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F88B18B19C294B400466E66 /* RTMoviesViewController.xib */; };
+		7FBD1F3219C9523B00BAAC61 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FBD1F3119C9523B00BAAC61 /* default.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F23882119C83E710038FF17 /* RTMoviesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTMoviesViewController.h; sourceTree = "<group>"; };
+		7F23882219C83E710038FF17 /* RTMoviesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTMoviesViewController.m; sourceTree = "<group>"; };
+		7F23882319C83E710038FF17 /* RTMoviesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RTMoviesViewController.xib; sourceTree = "<group>"; };
+		7F23882619C851570038FF17 /* RTMovieTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTMovieTableViewCell.h; sourceTree = "<group>"; };
+		7F23882719C851570038FF17 /* RTMovieTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTMovieTableViewCell.m; sourceTree = "<group>"; };
+		7F23882819C851570038FF17 /* RTMovieTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RTMovieTableViewCell.xib; sourceTree = "<group>"; };
 		7F88B15719C2945D00466E66 /* RottenTomatoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RottenTomatoes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F88B15A19C2945D00466E66 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7F88B15C19C2945D00466E66 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -50,9 +59,7 @@
 		7F88B17B19C2945D00466E66 /* RottenTomatoesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RottenTomatoesTests-Info.plist"; sourceTree = "<group>"; };
 		7F88B17D19C2945D00466E66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7F88B17F19C2945D00466E66 /* RottenTomatoesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RottenTomatoesTests.m; sourceTree = "<group>"; };
-		7F88B18919C294B400466E66 /* RTMoviesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTMoviesViewController.h; sourceTree = "<group>"; };
-		7F88B18A19C294B400466E66 /* RTMoviesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTMoviesViewController.m; sourceTree = "<group>"; };
-		7F88B18B19C294B400466E66 /* RTMoviesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RTMoviesViewController.xib; sourceTree = "<group>"; };
+		7FBD1F3119C9523B00BAAC61 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = default.jpg; path = data/images/default.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +86,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F23882B19C8BFC60038FF17 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7F23882619C851570038FF17 /* RTMovieTableViewCell.h */,
+				7F23882719C851570038FF17 /* RTMovieTableViewCell.m */,
+				7F23882819C851570038FF17 /* RTMovieTableViewCell.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		7F88B14E19C2945D00466E66 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +129,7 @@
 		7F88B16019C2945D00466E66 /* RottenTomatoes */ = {
 			isa = PBXGroup;
 			children = (
+				7F23882B19C8BFC60038FF17 /* Views */,
 				7F88B18E19C2950A00466E66 /* ViewControllers */,
 				7F88B16919C2945D00466E66 /* RTAppDelegate.h */,
 				7F88B16A19C2945D00466E66 /* RTAppDelegate.m */,
@@ -124,6 +142,7 @@
 		7F88B16119C2945D00466E66 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7FBD1F3119C9523B00BAAC61 /* default.jpg */,
 				7F88B16219C2945D00466E66 /* RottenTomatoes-Info.plist */,
 				7F88B16319C2945D00466E66 /* InfoPlist.strings */,
 				7F88B16619C2945D00466E66 /* main.m */,
@@ -153,9 +172,9 @@
 		7F88B18E19C2950A00466E66 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7F88B18919C294B400466E66 /* RTMoviesViewController.h */,
-				7F88B18A19C294B400466E66 /* RTMoviesViewController.m */,
-				7F88B18B19C294B400466E66 /* RTMoviesViewController.xib */,
+				7F23882119C83E710038FF17 /* RTMoviesViewController.h */,
+				7F23882219C83E710038FF17 /* RTMoviesViewController.m */,
+				7F23882319C83E710038FF17 /* RTMoviesViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -237,8 +256,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F88B16519C2945D00466E66 /* InfoPlist.strings in Resources */,
-				7F88B18D19C294B400466E66 /* RTMoviesViewController.xib in Resources */,
+				7F23882519C83E710038FF17 /* RTMoviesViewController.xib in Resources */,
+				7F23882A19C851570038FF17 /* RTMovieTableViewCell.xib in Resources */,
 				7F88B16D19C2945D00466E66 /* Images.xcassets in Resources */,
+				7FBD1F3219C9523B00BAAC61 /* default.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +280,8 @@
 			files = (
 				7F88B16B19C2945D00466E66 /* RTAppDelegate.m in Sources */,
 				7F88B16719C2945D00466E66 /* main.m in Sources */,
-				7F88B18C19C294B400466E66 /* RTMoviesViewController.m in Sources */,
+				7F23882919C851570038FF17 /* RTMovieTableViewCell.m in Sources */,
+				7F23882419C83E710038FF17 /* RTMoviesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +478,7 @@
 				7F88B18519C2945D00466E66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F88B18619C2945D00466E66 /* Build configuration list for PBXNativeTarget "RottenTomatoesTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +487,7 @@
 				7F88B18819C2945D00466E66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
