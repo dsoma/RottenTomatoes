@@ -27,6 +27,8 @@
 		7FBD1F3219C9523B00BAAC61 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FBD1F3119C9523B00BAAC61 /* default.jpg */; };
 		7FFB417019C966F300AFB745 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 7FFB416F19C966F300AFB745 /* Podfile */; };
 		7FFB417419C9846F00AFB745 /* RTModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB417319C9846F00AFB745 /* RTModel.m */; };
+		7FFB417819C9986000AFB745 /* RTMovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFB417619C9986000AFB745 /* RTMovieDetailViewController.m */; };
+		7FFB417919C9986000AFB745 /* RTMovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFB417719C9986000AFB745 /* RTMovieDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,9 @@
 		7FFB416F19C966F300AFB745 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		7FFB417219C9846F00AFB745 /* RTModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTModel.h; sourceTree = "<group>"; };
 		7FFB417319C9846F00AFB745 /* RTModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTModel.m; sourceTree = "<group>"; };
+		7FFB417519C9986000AFB745 /* RTMovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTMovieDetailViewController.h; sourceTree = "<group>"; };
+		7FFB417619C9986000AFB745 /* RTMovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTMovieDetailViewController.m; sourceTree = "<group>"; };
+		7FFB417719C9986000AFB745 /* RTMovieDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RTMovieDetailViewController.xib; sourceTree = "<group>"; };
 		F261E4B9BE7141E9B21E9EE8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -188,6 +193,9 @@
 				7F23882119C83E710038FF17 /* RTMoviesViewController.h */,
 				7F23882219C83E710038FF17 /* RTMoviesViewController.m */,
 				7F23882319C83E710038FF17 /* RTMoviesViewController.xib */,
+				7FFB417519C9986000AFB745 /* RTMovieDetailViewController.h */,
+				7FFB417619C9986000AFB745 /* RTMovieDetailViewController.m */,
+				7FFB417719C9986000AFB745 /* RTMovieDetailViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -283,6 +291,7 @@
 				7F88B16519C2945D00466E66 /* InfoPlist.strings in Resources */,
 				7F23882519C83E710038FF17 /* RTMoviesViewController.xib in Resources */,
 				7F23882A19C851570038FF17 /* RTMovieTableViewCell.xib in Resources */,
+				7FFB417919C9986000AFB745 /* RTMovieDetailViewController.xib in Resources */,
 				7F88B16D19C2945D00466E66 /* Images.xcassets in Resources */,
 				7FBD1F3219C9523B00BAAC61 /* default.jpg in Resources */,
 			);
@@ -340,6 +349,7 @@
 				7FFB417419C9846F00AFB745 /* RTModel.m in Sources */,
 				7F88B16719C2945D00466E66 /* main.m in Sources */,
 				7F23882919C851570038FF17 /* RTMovieTableViewCell.m in Sources */,
+				7FFB417819C9986000AFB745 /* RTMovieDetailViewController.m in Sources */,
 				7F23882419C83E710038FF17 /* RTMoviesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

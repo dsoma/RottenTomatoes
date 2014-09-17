@@ -18,6 +18,8 @@
 @interface RTModel : NSObject
 
 @property (weak, nonatomic) id <MovieDataObserver> observer;
+@property (weak, nonatomic) UIImage* movieImageThumbnail;
+@property (nonatomic) int currentMovieItemIndex;
 
 -(void) loadMovieList;
 -(int)  getMovieCount;
@@ -25,7 +27,7 @@
 -(NSDictionary*) getMovie:(int)movieIndexInList;
 -(NSDictionary*) getMoviePoster:(int)movieIndexInList;
 -(NSString*) getMovieThumbnailUrl:(int)movieIndexInList;
+-(NSString*) getMoviePosterUrl:(int)movieIndexInList;
 -(NSString*) getTitle:(int)movieIndexInList;
 -(NSString*) getDesc:(int)movieIndexInList;
-
 @end

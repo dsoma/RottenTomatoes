@@ -9,6 +9,7 @@
 #import "RTMoviesViewController.h"
 #import "RTMovieTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "RTMovieDetailViewController.h"
 
 static NSString *cellIdentifier = @"RTMovieTableViewCellId";
 
@@ -77,6 +78,7 @@ static NSString *cellIdentifier = @"RTMovieTableViewCellId";
     NSString* posterUrl = [self.model getMovieThumbnailUrl:rowIndex];
     NSURL* thumbnailUrl = [[NSURL alloc] initWithString:posterUrl];
     [cell.moviePosterView setImageWithURL:thumbnailUrl placeholderImage:[UIImage imageNamed:@"default.jpg"]];
+    self.model.movieImageThumbnail = cell.moviePosterView.image;
     
     // Set the title and desc
     cell.movieTitleLabel.text = [self.model getTitle:rowIndex];
@@ -95,6 +97,20 @@ static NSString *cellIdentifier = @"RTMovieTableViewCellId";
 -(void)movieListLoadFailed:(NSError*)error
 {
     // TODO: Display error
+}
+
+// From UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    RTMovieDetailViewController* movieDetailViewController = [[RTMovieDetailViewController alloc] init];
+    
+    self.model.currentMovieItemIndex = indexPath.row;
+    movieDetailViewController.model  = self.model;
+    
+    [self.navigationController pushViewController:movieDetailViewController animated:YES];
+    
+    //[movieDetailViewController loadMovieDetails:indexPath.row];
 }
 
 

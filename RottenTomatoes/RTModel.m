@@ -13,6 +13,7 @@ static NSString* apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/
 @interface RTModel()
 
 @property (strong, nonatomic) NSArray* movieList;
+@property (weak, nonatomic) NSDictionary* currentMovieItem;
 
 @end
 
@@ -33,7 +34,6 @@ static NSString* apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/
         
         NSLog(@"Movies: %@", self.movieList);
         
-        // TODO: Send this only on success; On failure callback loadFailed.
         if (self.observer != nil) {
             [self.observer movieListLoaded];
         }
@@ -100,6 +100,18 @@ static NSString* apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/
     }
     
     return nil;
+}
+
+-(NSString*) getMoviePosterUrl:(int)movieIndexInList
+{
+    NSString* immutableThumbnailUrl = [self getMovieThumbnailUrl:movieIndexInList];
+    NSMutableString* thumbnailUrl = [immutableThumbnailUrl mutableCopy];
+    [thumbnailUrl replaceOccurrencesOfString:@"_tmb"
+                                  withString:@"_ori"
+                                  options:NSBackwardsSearch
+                                       range:NSMakeRange(0, [immutableThumbnailUrl length])];
+    
+    return thumbnailUrl;
 }
 
 @end

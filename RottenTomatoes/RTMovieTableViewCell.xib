@@ -36,6 +36,7 @@
                 </subviews>
                 <color key="backgroundColor" red="0.34990658967391308" green="0.34990658967391308" blue="0.34990658967391308" alpha="1" colorSpace="calibratedRGB"/>
             </tableViewCellContentView>
+            <gestureRecognizers/>
             <connections>
                 <outlet property="movieDescLabel" destination="0ZQ-Un-qwD" id="jz3-pT-eNO"/>
                 <outlet property="moviePosterView" destination="EdU-oj-a0T" id="HD5-rg-B06"/>
