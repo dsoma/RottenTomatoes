@@ -10,6 +10,7 @@
 #import "RTMovieTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "RTMovieDetailViewController.h"
+#import "AMTumblrHud.h"
 
 static NSString *cellIdentifier = @"RTMovieTableViewCellId";
 
@@ -17,6 +18,7 @@ static NSString *cellIdentifier = @"RTMovieTableViewCellId";
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) RTModel* model;
+@property (strong, nonatomic) AMTumblrHud* tumblrHUD;
 
 @end
 
@@ -35,8 +37,6 @@ static NSString *cellIdentifier = @"RTMovieTableViewCellId";
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    
     self.tableView.delegate   = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight  = 145;
@@ -44,6 +44,14 @@ static NSString *cellIdentifier = @"RTMovieTableViewCellId";
     [self.tableView registerNib:[UINib nibWithNibName:@"RTMovieTableViewCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
     
     [self.model loadMovieList];
+    
+    self.tumblrHUD = [[AMTumblrHud alloc] initWithFrame:CGRectMake(120, 120, 60, 20)];
+    self.tumblrHUD.hudColor = [UIColor yellowColor];
+    [self.view addSubview:self.tumblrHUD];
+    
+    [self.tumblrHUD showAnimated:YES];
+    
+    [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,6 +99,8 @@ static NSString *cellIdentifier = @"RTMovieTableViewCellId";
 -(void)movieListLoaded
 {
     [self.tableView reloadData];
+    [self.tumblrHUD hide];
+    [self.tumblrHUD removeFromSuperview];
 }
 
 -(void)movieListLoadFailed:(NSError*)error
