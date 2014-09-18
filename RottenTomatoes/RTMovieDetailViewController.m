@@ -45,6 +45,8 @@
 -(void) loadMovieDetails:(int)movieIndex
 {
     if (self.model != nil && self.posterView != nil) {
+        // First set the title of the view with the selected movie name
+        self.title = [self.model getTitle:movieIndex];
         
         // Asynchronously load the movie poster thumbnail
         NSString* thumbnailUrlString = [self.model getMovieThumbnailUrl:movieIndex];
