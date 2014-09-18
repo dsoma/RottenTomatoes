@@ -30,4 +30,8 @@
 -(NSString*) getMoviePosterUrl:(int)movieIndexInList;
 -(NSString*) getTitle:(int)movieIndexInList;
 -(NSString*) getDesc:(int)movieIndexInList;
+-(NSString*) getReleaseYear:(int)movieIndexInList;
+-(NSString*) getCriticsScore:(int)movieIndexInList;
+-(NSString*) getAudienceScore:(int)movieIndexInList;
+-(NSString*) getMpaaRating:(int)movieIndexInList;
 @end

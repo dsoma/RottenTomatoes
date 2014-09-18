@@ -91,6 +91,42 @@ static NSString* apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/
     return nil;
 }
 
+-(NSString*) getReleaseYear:(int)movieIndexInList
+{
+    NSDictionary* movie = [self getMovie:movieIndexInList];
+    if (movie != nil)
+    {
+        return [movie valueForKey:@"year"];
+    }
+    
+    return nil;
+}
+
+-(NSString*) getCriticsScore:(int)movieIndexInList
+{
+    NSDictionary* movie = [self getMovie:movieIndexInList];
+    if (movie != nil)
+    {
+        NSDictionary* ratings = [movie valueForKey:@"ratings"];
+        return [ratings valueForKey:@"critics_score"];
+    }
+    
+    return nil;
+}
+
+-(NSString*) getAudienceScore:(int)movieIndexInList
+{
+    NSDictionary* movie = [self getMovie:movieIndexInList];
+    if (movie != nil)
+    {
+        NSDictionary* ratings = [movie valueForKey:@"ratings"];
+        return [ratings valueForKey:@"audience_score"];
+    }
+    
+    return nil;
+}
+
+
 -(NSString*) getDesc:(int)movieIndexInList
 {
     NSDictionary* movie = [self getMovie:movieIndexInList];
@@ -112,6 +148,17 @@ static NSString* apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/
                                        range:NSMakeRange(0, [immutableThumbnailUrl length])];
     
     return thumbnailUrl;
+}
+
+-(NSString*) getMpaaRating:(int)movieIndexInList
+{
+    NSDictionary* movie = [self getMovie:movieIndexInList];
+    if (movie != nil)
+    {
+        return [movie valueForKey:@"mpaa_rating"];
+    }
+    
+    return nil;
 }
 
 @end
