@@ -16,6 +16,6 @@ Time taken : 9 hours
 
 ## Walkthrough of all user stories:
 
-![Video Walkthrough]()
+![Video Walkthrough](demo.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
