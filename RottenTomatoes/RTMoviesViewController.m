@@ -11,6 +11,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "RTMovieDetailViewController.h"
 #import "AMTumblrHud.h"
+#import "RTErrorView.h"
 
 static NSString *cellIdentifier = @"RTMovieTableViewCellId";
 
@@ -19,6 +20,7 @@ static NSString *cellIdentifier = @"RTMovieTableViewCellId";
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) RTModel* model;
 @property (strong, nonatomic) AMTumblrHud* tumblrHUD;
+@property (strong, nonatomic) RTErrorView* errorView;
 
 @end
 
@@ -105,7 +107,19 @@ static NSString *cellIdentifier = @"RTMovieTableViewCellId";
 
 -(void)movieListLoadFailed:(NSError*)error
 {
-    // TODO: Display error
+    self.errorView = [[RTErrorView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y + 30,
+                                                                   self.view.bounds.size.width, 60)];
+    if (error != nil) {
+        if (error.code == 1) {
+            [self.errorView setErrorText:@"Oops! No Movies!"];
+        }
+        else {
+            [self.errorView setErrorText:@"Oops! Connection error"];
+        }
+    }
+    
+    [self.view addSubview:self.errorView];
+    
 }
 
 // From UITableViewDelegate

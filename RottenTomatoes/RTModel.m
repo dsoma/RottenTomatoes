@@ -31,11 +31,19 @@ static NSString* apiURL = @"http://api.rottentomatoes.com/api/public/v1.0/lists/
         NSDictionary* object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         
         self.movieList = object[@"movies"];
-        
+            
         NSLog(@"Movies: %@", self.movieList);
         
         if (self.observer != nil) {
-            [self.observer movieListLoaded];
+            if (connectionError == nil) {
+                [self.observer movieListLoaded];
+                if (self.movieList == nil) {
+                    [self.observer movieListLoadFailed:[NSError errorWithDomain:@"" code:1 userInfo:nil]];
+                }
+            }
+            else {
+                [self.observer movieListLoadFailed:connectionError];
+            }
         }
     }];
 }
