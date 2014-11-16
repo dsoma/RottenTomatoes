@@ -2,6 +2,13 @@
 
 RottenTomatoes client app for iOS platform.
 
+This app is a client for RottenTomatoes web service which provides movie listings, ratings, reviews and other data. The app requests the current box office trending movies and lists them in a table view. More details of each movie is shown when a movie item is tapped in the list.
+
+## Acknowledgements
+
+* AFNetworking cocopod is used to make RottenTomatoes REST API and handle responses. It is also used to fetch the movie thumbnail images and cache them. (http://afnetworking.com/)
+* Cocoa control is used to indicate the progress of API request. (https://www.cocoacontrols.com/controls/amtumblrhud)
+
 Time taken : 9 hours
 
 ## User stories:
